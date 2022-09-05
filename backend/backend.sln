@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend", "backend\backend.csproj", "{1E6D7365-2BC6-4119-8895-171AB13DC930}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDataAccessLibrary", "EFDataAccessLibrary\EFDataAccessLibrary.csproj", "{3BFA6624-6B7E-482B-ACAC-E00130898D66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1E6D7365-2BC6-4119-8895-171AB13DC930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E6D7365-2BC6-4119-8895-171AB13DC930}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E6D7365-2BC6-4119-8895-171AB13DC930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BFA6624-6B7E-482B-ACAC-E00130898D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BFA6624-6B7E-482B-ACAC-E00130898D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BFA6624-6B7E-482B-ACAC-E00130898D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BFA6624-6B7E-482B-ACAC-E00130898D66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
