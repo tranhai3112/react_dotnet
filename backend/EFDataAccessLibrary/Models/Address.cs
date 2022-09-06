@@ -21,7 +21,7 @@ namespace EFDataAccessLibrary.Models
         public int PersonId { get; set; }
 
         [ForeignKey("PersonId")]
-        public Person person { get; set; }
+        public Person? Person { get; set; }
 
     }
 }
