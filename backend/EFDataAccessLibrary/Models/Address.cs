@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace EFDataAccessLibrary.Models
 {
@@ -12,7 +13,8 @@ namespace EFDataAccessLibrary.Models
     public class Address
     {
         [Key]
-        public string Id { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public int Id { get; set; }
 
         [Required]
         [Column(TypeName ="ntext")]
@@ -20,6 +22,7 @@ namespace EFDataAccessLibrary.Models
 
         public int PersonId { get; set; }
 
+        [JsonIgnore]
         [ForeignKey("PersonId")]
         public Person? Person { get; set; }
 

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace EFDataAccessLibrary.Models
 {
@@ -12,6 +13,7 @@ namespace EFDataAccessLibrary.Models
     public class Person_Book
     {
         [Key]
+        [JsonIgnore]
         public int Id { get; set; }
 
         public int BookId { get; set; }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 using System.Net.Mail;
+using System.Text.Json.Serialization;
 
 namespace EFDataAccessLibrary.Models
 {
@@ -14,11 +15,12 @@ namespace EFDataAccessLibrary.Models
     public class Profile
     {
         [Key]
+        [JsonIgnore]
         public int Id { get; set; }
 
         [StringLength(100)]
         public string email { get; set; }
-
+        [JsonIgnore]
         public Person? Person { get; set; }
     }
     

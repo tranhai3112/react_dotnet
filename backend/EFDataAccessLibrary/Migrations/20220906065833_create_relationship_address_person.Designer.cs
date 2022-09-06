@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFDataAccessLibrary.Migrations
 {
     [DbContext(typeof(DataAccessContext))]
-    [Migration("20220905095620_Create_database_V3")]
-    partial class Create_database_V3
+    [Migration("20220906065833_create_relationship_address_person")]
+    partial class create_relationship_address_person
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,8 +26,11 @@ namespace EFDataAccessLibrary.Migrations
 
             modelBuilder.Entity("EFDataAccessLibrary.Models.Address", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -137,13 +140,13 @@ namespace EFDataAccessLibrary.Migrations
 
             modelBuilder.Entity("EFDataAccessLibrary.Models.Address", b =>
                 {
-                    b.HasOne("EFDataAccessLibrary.Models.Person", "person")
+                    b.HasOne("EFDataAccessLibrary.Models.Person", "Person")
                         .WithMany("Addresses")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("person");
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("EFDataAccessLibrary.Models.Person_Book", b =>
@@ -180,8 +183,7 @@ namespace EFDataAccessLibrary.Migrations
                 {
                     b.Navigation("Addresses");
 
-                    b.Navigation("Profile")
-                        .IsRequired();
+                    b.Navigation("Profile");
                 });
 #pragma warning restore 612, 618
         }
