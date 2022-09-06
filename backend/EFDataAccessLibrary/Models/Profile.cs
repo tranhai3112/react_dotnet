@@ -19,7 +19,7 @@ namespace EFDataAccessLibrary.Models
         [StringLength(100)]
         public string email { get; set; }
 
-        public Person Person { get; set; }
+        public Person? Person { get; set; }
     }
     
     public class ProfileValidator : AbstractValidator<Profile>

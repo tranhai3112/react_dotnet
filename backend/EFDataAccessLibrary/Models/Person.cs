@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using FluentValidation;
+using System.ComponentModel;
 
 namespace EFDataAccessLibrary.Models
 {
@@ -24,10 +25,8 @@ namespace EFDataAccessLibrary.Models
 
         [Required]
         public int Age { get; set; }
-
-        public List<Address> Addresses { get; set; }
-
-        public Profile Profile { get; set; }
+        public List<Address>? Addresses { get; set; }
+        public Profile? Profile { get; set; }
 
     }
     public class PersonValidator : AbstractValidator<Person>
@@ -35,7 +34,7 @@ namespace EFDataAccessLibrary.Models
         public PersonValidator()
         {
             RuleFor(person => person.Age)
-                .Must(age => age >=16).WithMessage("Invalid {PropertyName}");
+                .Must(age => age >=16).WithMessage("Invalid {PropertyName}, Age should be greater than 16 or equal to 16");
         }
     }
     
