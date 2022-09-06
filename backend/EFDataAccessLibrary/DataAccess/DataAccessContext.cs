@@ -39,6 +39,13 @@ namespace EFDataAccessLibrary.DataAccess
                        .HasForeignKey<Profile>(profile => profile.Id)
                        .OnDelete(DeleteBehavior.Cascade);
             });
+            modelBuilder.Entity<Address>(options =>
+            {
+                options.HasOne(address => address.Person)
+                       .WithMany(person => person.Addresses)
+                       .HasForeignKey(address => address.PersonId)
+                       .OnDelete(DeleteBehavior.Cascade);
+            });
         }
     }
 }

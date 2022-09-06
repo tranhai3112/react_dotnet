@@ -7,6 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using FluentValidation;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace EFDataAccessLibrary.Models
 {
@@ -14,6 +16,7 @@ namespace EFDataAccessLibrary.Models
     public class Person
     {
         [Key]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int Id { get; set; }
         [Required]
         [StringLength(70)]

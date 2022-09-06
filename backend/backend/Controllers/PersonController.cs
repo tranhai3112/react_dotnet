@@ -4,6 +4,7 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace backend.Controllers
 {
@@ -36,12 +37,33 @@ namespace backend.Controllers
         {
             PersonValidator validationRules = new PersonValidator();
             ValidationResult result = validationRules.Validate(person);
-            
+            IDbContextTransaction transaction = null;
             if (result.IsValid)
             {
-                _context.Persons.Add(person);
-                await _context.SaveChangesAsync();
-                return Ok(person);
+                try
+                {
+                    //https://stackoverflow.com/questions/5212751/how-can-i-retrieve-id-of-inserted-entity-using-entity-framework
+                    using (transaction = await _context.Database.BeginTransactionAsync())
+                    {
+                        Profile profile = new Profile
+                        {
+                            Person = person,
+                        };
+                        Address address = new Address
+                        {
+                            Person = person,
+                        };
+                        _context.Persons.Add(person);
+                        await _context.SaveChangesAsync();
+                        transaction.Commit();
+                        return Ok(person);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    return BadRequest(ex);
+                }
             } else
             {
                 return BadRequest(result.Errors);
