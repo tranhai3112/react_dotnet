@@ -1,0 +1,25 @@
+.store{
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+}
+.store-item{
+    background-color:bisque;
+    border-radius: 12px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-bottom: 24px;
+    width: 90%;
+    min-height: 100px;
+    .store-item-header{
+        display: flex;
+        justify-content: space-between;
+    }
+    .store-item-option{
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+}

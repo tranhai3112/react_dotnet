@@ -1,0 +1,25 @@
+@import "../varible";
+
+.btn{
+    appearance: button;
+    padding: 8px 12px;
+    background-color: $btnDefault;
+    color:#fff;
+    border-radius: 4px;
+    min-width: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    display: block;
+}
+.btn + .btn{
+    margin-left: 12px;
+}
+.btn-danger{
+    background-color: $btnDanger;
+}
+.btn-info{
+    background-color: $btnInfo;
+}

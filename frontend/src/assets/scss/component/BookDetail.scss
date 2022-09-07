@@ -1,0 +1,26 @@
+.book-edit{
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .book-edit-form{
+        max-width: 700px;
+        width: 100%;
+        padding: 20px 12px;
+        border-radius: 20px;
+        border: 1px solid black;
+    }
+    .book-edit-form{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        .form-input{
+            margin: 6px 0;
+            input{
+                width: 100%;
+                padding: 6px 10px;
+            }
+        }
+    }
+}

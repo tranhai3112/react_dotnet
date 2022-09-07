@@ -33,6 +33,13 @@ namespace backend.Controllers
             return Ok(books);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Book>> GetOne(int id)
+        {
+            var book = await _context.Books.FindAsync(id);
+            return book == null ? NotFound() : Ok(book);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Book>> Create(Book book)
         {

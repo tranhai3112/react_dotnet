@@ -1,0 +1,29 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ul,li {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+p {
+    word-break: break-all;
+}
+
+.container{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+
+@import "./component/Navigation.scss";
+@import "./component/BookItem.scss";
+@import "./component/Button.scss";
+@import "./component/BookDetail.scss";
+@import "./component/Store.scss";
+@import "./component/Modal.scss";
