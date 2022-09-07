@@ -19,23 +19,11 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Book>>> GetAll([FromQuery]string name)
+        public async Task<ActionResult<List<Book>>> GetAll([FromQuery]string? name)
         {
             
-            //var books = await (from person in _context.Persons
-            //                   join person_book in _context.Person_Books on person.Id equals person_book.PersonId
-            //                   join book in _context.Books on person_book.BookId equals book.Id 
-            //                   where person.Id == 1
-            //                   select new
-            //                   {
-            //                       Id = person.Id,
-            //                       BookName = book.Name,
-            //                       Price = book.Price,
-            //                       Description = book.Descripion,
-            //                       Date = book.Date
-            //                   }).ToListAsync();
             var books = await (from book in _context.Books
-                               where book.Name.Contains(name)
+                               where book.Name.Contains(name == null ? "" : name) && book.deleted_at ==null
                                select book
                                ).ToListAsync();
             if(books.Count == 0)
