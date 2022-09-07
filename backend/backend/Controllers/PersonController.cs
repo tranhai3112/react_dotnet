@@ -85,14 +85,18 @@ namespace backend.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Person>> Delete(int id)
+        public async Task<ActionResult<object>> Delete(int id)
         {
             Person person = await _context.Persons.FindAsync(id);
             if (person == null)
                 return NotFound();
             _context.Persons.Remove(person);
             await _context.SaveChangesAsync();
-            return Ok(person);
+            return Ok(new
+            {
+                deletedId = id,
+                message = "success",
+            });
         }
 
     }
