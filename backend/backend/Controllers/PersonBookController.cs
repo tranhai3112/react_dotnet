@@ -65,7 +65,9 @@ namespace backend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<object>> Delete(int id)
         {
-            Person_Book person_Book = await _context.Person_Books.FindAsync(id);
+            Person_Book person_Book = await (from p in _context.Person_Books
+                                             where p.PersonId == 1 && p.BookId == id
+                                             select p).FirstAsync();
             if (person_Book == null)
                 return NotFound();
             _context.Person_Books.Remove(person_Book);
